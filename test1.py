@@ -39,8 +39,7 @@ while True:
 
         # make HTTP POST request to Power BI REST API
 
-        req = request.Request(REST_API_URL, data)
-        response = request.urlopen(req)
+        response = request.post(REST_API_URL,data=data)
         print('POST request to Power BI with data:{0}'.format(data))
         print('Response: HTTP {0} {1}\n'.format(response.getcode(),response.read()))
 
