@@ -45,9 +45,9 @@ while True:
         print('Response: HTTP {0} {1}\n'.format(response.getcode(),response.read()))
 
         time.sleep(1)
-    except urllib.request.urlopen.HTTPError as e:
+    except urllib.request.HTTPError as e:
         print('HTTP Error: {0} - {1}'.format(e.code, e.reason))
-    except urllib.request.urlopen.URLError as e:
+    except urllib.request.URLError as e:
         print('URL Error: {0}'.format(e.reason))
     except Exception as e:
         print('General Exception: {0}'.format(e))
