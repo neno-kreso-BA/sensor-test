@@ -35,7 +35,9 @@ while True:
         humidity = bme280.get_humidity()
         temperature = bme280.get_temperature()
 
-        logging.info("Temperature: {:05.2f} *C Relative humidity: {:05.2f} %".format(temperature, humidity))
+       logging.info("""Temperature: {:05.2f} *C
+       Relative humidity: {:05.2f} %
+       """.format(temperature, humidity))
 
         # data that we're sending to Power BI REST API
 
