@@ -63,5 +63,5 @@ while True:
         print('HTTP Error: {0} - {1}'.format(e.code, e.reason))
     except request.URLError as e:
         print('URL Error: {0}'.format(e.reason))
-     except Exception as e:
+    except Exception as e:
         # print('General Exception: {0}'.format(e))
