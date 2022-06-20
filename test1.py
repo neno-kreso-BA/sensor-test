@@ -27,7 +27,7 @@ while True:
 
         humidity = bme280.get_humidity()
         temp = bme280.get_temperature()
-        print 'Temp={0:0.1f}*C Humidity={1:0.1f}%'.format(temp,humidity)
+        print('Temp={0:0.1f}*C Humidity={1:0.1f}%'.format(temp,humidity))
 
         # ensure that timestamp string is formatted properly
 
@@ -41,13 +41,13 @@ while True:
 
         req = urllib2.Request(REST_API_URL, data)
         response = urllib2.urlopen(req)
-        print 'POST request to Power BI with data:{0}'.format(data)
-        print 'Response: HTTP {0} {1}\n'.format(response.getcode(),response.read())
+        print('POST request to Power BI with data:{0}'.format(data))
+        print('Response: HTTP {0} {1}\n'.format(response.getcode(),response.read()))
 
         time.sleep(1)
     except urllib2.HTTPError, e:
-        print 'HTTP Error: {0} - {1}'.format(e.code, e.reason)
+        print('HTTP Error: {0} - {1}'.format(e.code, e.reason))
     except urllib2.URLError, e:
-        print 'URL Error: {0}'.format(e.reason)
+        print('URL Error: {0}'.format(e.reason))
     except Exception, e:
-        print 'General Exception: {0}'.format(e)
+        print('General Exception: {0}'.format(e))
