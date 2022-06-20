@@ -20,7 +20,7 @@ while True:
 	try:
 		# read and print out humidity and temperature from sensor
 		humidity = bme280.get_humidity()
-    		temp = bme280.get_temperature()
+		temp = bme280.get_temperature()
 		print 'Temp={0:0.1f}*C Humidity={1:0.1f}%'.format(temp, humidity)
 		
 		# ensure that timestamp string is formatted properly
