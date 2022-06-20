@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import urllib
-import urllib.request
+import urllib.request as request
+import urllib.response as response
 import time
 from datetime import datetime
 from bme280 import BME280
@@ -35,19 +36,19 @@ while True:
 
         # data that we're sending to Power BI REST API
 
-        data = '[{{ "temperature": "{1:0.1f}", "humidity": "{2:0.1f}", "timestamp": "{0}" }}]'.format(now,temp, humidity)
+        data = '[{{ "temperature": "{1:0.1f}", "humidity": "{2:0.1f}", "timestamp": "{0}" }}]'.format(temp, humidity,now)
 
         # make HTTP POST request to Power BI REST API
 
-        req = urllib.request.Request(REST_API_URL, data)
-        response = urllib.request.urlopen(req)
+        req = request.Request(REST_API_URL, data)
+        response = request.urlopen(req)
         print('POST request to Power BI with data:{0}'.format(data))
         print('Response: HTTP {0} {1}\n'.format(response.getcode(),response.read()))
 
         time.sleep(1)
-    except urllib.request.HTTPError as e:
+    except request.HTTPError as e:
         print('HTTP Error: {0} - {1}'.format(e.code, e.reason))
-    except urllib.request.URLError as e:
+    except request.URLError as e:
         print('URL Error: {0}'.format(e.reason))
     except Exception as e:
         print('General Exception: {0}'.format(e))
