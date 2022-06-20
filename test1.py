@@ -20,7 +20,7 @@ while True:
 	try:
 		# read and print out humidity and temperature from sensor
 		humidity = bme280.get_humidity()
-    temp = bme280.get_temperature()
+    		temp = bme280.get_temperature()
 		print 'Temp={0:0.1f}*C Humidity={1:0.1f}%'.format(temp, humidity)
 		
 		# ensure that timestamp string is formatted properly
@@ -36,7 +36,7 @@ while True:
 		print("Response: HTTP {0} {1}\n".format(response.getcode(), response.read()))	
 	
 		time.sleep(1)
-  except urllib2.HTTPError as e:
+  	except urllib2.HTTPError as e:
 		print("HTTP Error: {0} - {1}".format(e.code, e.reason))
 	except urllib2.URLError as e:
 		print("URL Error: {0}".format(e.reason))
