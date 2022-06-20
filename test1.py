@@ -14,7 +14,7 @@ bme280 = BME280(i2c_dev=bus)
 
 # REST API endpoint, given to you when you create an API streaming dataset
 # Will be of the format: https://api.powerbi.com/beta/<tenant id>/datasets/< dataset id>/rows?key=<key id>
-REST_API_URL = " *** Your Push API URL goes here *** "
+REST_API_URL = " https://api.powerbi.com/beta/ddd66cce-ffe1-4029-967c-5e15ef73127f/datasets/68c21b77-d940-4815-ade3-cf2f56c3895a/rows?key=eFN8uasQB8lLiqo8b95qUC9XXkzF2ilqHFHEa7JOEotKMuQpecfoNXHPcHvSGwv4DLHNS5t%2FqwbJQ5YlnaD9yw%3D%3D "
 
 while True:
 	try:
@@ -27,7 +27,7 @@ while True:
 		now = datetime.strftime(datetime.now(), "%Y-%m-%dT%H:%M:%S%Z")
 	
 		# data that we're sending to Power BI REST API
-		data = '[{{ "timestamp": "{0}", "temperature": "{1:0.1f}", "humidity": "{2:0.1f}" }}]'.format(now, temp, humidity)
+		data = '[{{ "temperature": "{1:0.1f}", "humidity": "{2:0.1f}", "timestamp": "{0}" }}]'.format(now, temp, humidity)
 	
 		# make HTTP POST request to Power BI REST API
 		req = urllib2.Request(REST_API_URL, data)
