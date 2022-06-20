@@ -25,14 +25,14 @@ while True:
     try:
 
         # read and print out humidity and temperature from sensor
-
-        humidity = bme280.get_humidity()
-        temp = bme280.get_temperature()
-        print('Temp={0:0.1f}*C Humidity={1:0.1f}%'.format(temp,humidity))
-
         # ensure that timestamp string is formatted properly
 
         now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S%Z')
+        humidity = bme280.get_humidity()
+        temp = bme280.get_temperature()
+        print('Temp={0:0.1f}*C Humidity={1:0.1f}% Time={0]'.format(temp,humidity,now))
+
+
 
         # data that we're sending to Power BI REST API
 
