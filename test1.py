@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import urllib
-import urllib2 as request
+import urllib.request as request
 import time 
 from datetime import datetime
 from bme280 import BME280
