@@ -55,7 +55,7 @@ while True:
         print('POST request to Power BI with data:{0}'.format(data))
         print('Response: HTTP {0} {1}\n'.format(response.getcode(),response.read()))
         
-        time.sleep(5)
+        time.sleep(2.5)
         
     except request.HTTPError as e:
         print('HTTP Error: {0} - {1}'.format(e.code, e.reason))
