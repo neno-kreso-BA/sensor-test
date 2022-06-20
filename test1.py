@@ -28,8 +28,8 @@ while True:
 
         now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S%Z')
         humidity = float(bme280.get_humidity())
-        temp = float(bme280.get_temperature())
-        print('Temp={0:0.1f}*C Humidity={1:0.1f}% Time:{0}'.format(temp,humidity,now))
+        temperature = float(bme280.get_temperature())
+        print('Temp={0:0.1f}*C Humidity={1:0.1f}% Time:{0}'.format(temperature,humidity,now))
 
 
 
@@ -39,11 +39,13 @@ while True:
 
         # make HTTP POST request to Power BI REST API
 
-        response = request.post(REST_API_URL,data=data)
+        req=request.Request(REST_API_URL,data=data)
+        response = request.urlopen(req)
         print('POST request to Power BI with data:{0}'.format(data))
         print('Response: HTTP {0} {1}\n'.format(response.getcode(),response.read()))
-
+        
         time.sleep(1)
+        
     except request.HTTPError as e:
         print('HTTP Error: {0} - {1}'.format(e.code, e.reason))
     except request.URLError as e:
