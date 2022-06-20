@@ -65,3 +65,4 @@ while True:
         print('URL Error: {0}'.format(e.reason))
     except Exception as e:
         print('General Exception: {0}'.format(e))
+    time.sleep(10)
