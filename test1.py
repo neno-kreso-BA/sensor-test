@@ -21,7 +21,7 @@ logging.basicConfig(
     level=logging.INFO,
     datefmt='%Y-%m-%d %H:%M:%S')
 
-logging.info("""test1-Print readings from the BME280 weather sensor and push to API.
+logging.info("test1-Print readings from the BME280 weather sensor and push to API. ")
 
 REST_API_URL = ' https://api.powerbi.com/beta/ddd66cce-ffe1-4029-967c-5e15ef73127f/datasets/68c21b77-d940-4815-ade3-cf2f56c3895a/rows?key=eFN8uasQB8lLiqo8b95qUC9XXkzF2ilqHFHEa7JOEotKMuQpecfoNXHPcHvSGwv4DLHNS5t%2FqwbJQ5YlnaD9yw%3D%3D '
 
