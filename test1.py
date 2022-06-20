@@ -42,7 +42,9 @@ while True:
 
         # data that we're sending to Power BI REST API
 
-        data = """[{{"temperature": "{0:f}","humidity": "{0:f}","timestamp": "{0}" }}]""".format(temperature,humidity,now)
+        data = "{{"temperature": "{0:f}","humidity": "{0:f}","timestamp": "{0}" }}".format(temperature,humidity,now)
+        data = json.dumps(data)
+        data = str(data)
         data = data.encode('utf-8')
         
         
