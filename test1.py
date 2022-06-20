@@ -64,4 +64,4 @@ while True:
     except request.URLError as e:
         print('URL Error: {0}'.format(e.reason))
     except Exception as e:
-        # print('General Exception: {0}'.format(e))
+        print('General Exception: {0}'.format(e))
