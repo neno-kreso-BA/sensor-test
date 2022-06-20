@@ -7,6 +7,7 @@ import time
 from datetime import datetime
 from bme280 import BME280
 import logging
+import json
 
 try:
     from smbus2 import SMBus
@@ -42,7 +43,11 @@ while True:
         # data that we're sending to Power BI REST API
 
         data = '[{{ "temperature": "{0:f}", "humidity": "{0:f}", "timestamp": "{0}" }}]'.format(temperature,humidity,now)
+        data = json.dumps(data)
+        data = str(data)
         data = data.encode('utf-8')
+        
+        
 
         # make HTTP POST request to Power BI REST API
 
