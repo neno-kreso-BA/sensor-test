@@ -30,7 +30,7 @@ while True:
         now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S%Z')
         humidity = bme280.get_humidity()
         temp = bme280.get_temperature()
-        print('Temp={0:0.1f}*C Humidity={1:0.1f}% Time:{}'.format(temp,humidity,now))
+        print('Temp={0:0.1f}*C Humidity={1:0.1f}% Time:{0}'.format(temp,humidity,now))
 
 
 
