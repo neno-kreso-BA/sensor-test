@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import urllib
-import urllib.request as request
+from urllib import request,parse
 import time 
 from datetime import datetime
 from bme280 import BME280
@@ -45,6 +45,7 @@ while True:
 
         # make HTTP POST request to Power BI REST API
 
+        data = parse.urlencode(data).encode()
         req=request.Request(REST_API_URL,data=data)
         response = request.urlopen(req)
         print('POST request to Power BI with data:{0}'.format(data))
