@@ -42,10 +42,11 @@ while True:
         # data that we're sending to Power BI REST API
 
         data = '[{{ "temperature": "{0:f}", "humidity": "{0:f}", "timestamp": "{0}" }}]'.format(temperature,humidity,now)
+        data = data.encode('utf-8')
 
         # make HTTP POST request to Power BI REST API
 
-        data = parse.urlencode(data).encode()
+
         req=request.Request(REST_API_URL,data=data)
         response = request.urlopen(req)
         print('POST request to Power BI with data:{0}'.format(data))
