@@ -24,17 +24,33 @@ logging.basicConfig(
 
 logging.info("test1-Print readings from the BME280 weather sensor and push to API. ")
 
+def get_cpu_temperature():
+    with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
+        temp = f.read()
+        temp = int(temp) / 1000.0
+    return temp
+
+factor = 2.25
+
+cpu_temps = [get_cpu_temperature()] * 5
+
 REST_API_URL = 'https://api.powerbi.com/beta/ddd66cce-ffe1-4029-967c-5e15ef73127f/datasets/7908168f-d482-4df6-9c06-01b2f0e46556/rows?noSignUpCheck=1&cmpid=pbi-glob-head-snn-signin&key=05lmKaucoaGnTC%2BcAEmQuJGudz3Z7aDN5hdLpJfSbpOw%2BE8SVcvD7VhXiDAfpqOGNz5GooQxE345fPexHZazMw%3D%3D'
 
 while True:
     try:
 
+        #cpu_temp
+        cpu_temp = get_cpu_temperature()
+        cpu_temps = cpu_temps[1:] + [cpu_temp]
+        avg_cpu_temp = sum(cpu_temps) / float(len(cpu_temps))
         # read and print out humidity and temperature from sensor
         # ensure that timestamp string is formatted properly
 
+        
         now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S%Z')
         humidity = bme280.get_humidity()
-        temperature = bme280.get_temperature()
+        raw_temp = bme280.get_temperature()
+        temperature= raw_temp - ((avg_cpu_temp - raw_temp) / factor)
 
         logging.info("""Temperature: {:05.2f} *C
         Relative humidity: {:05.2f} %
@@ -57,7 +73,7 @@ while True:
         print('POST request to Power BI with data:{0}'.format(data))
         print('Response: HTTP {0} {1}\n'.format(response.getcode(),response.read()))
         
-        time.sleep(10)
+        time.sleep(2)
         
     except request.HTTPError as e:
         print('HTTP Error: {0} - {1}'.format(e.code, e.reason))
