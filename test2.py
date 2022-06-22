@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+import ST7735
 import urllib
 from urllib import request,parse
 import time 
@@ -8,7 +8,7 @@ from datetime import datetime
 from bme280 import BME280
 import logging
 import json
-from enviroplus.noise import noise
+from enviroplus.noise import Noise
 try:
     # Transitional fix for breaking change in LTR559
     from ltr559 import LTR559
@@ -23,6 +23,8 @@ except ImportError:
 
 bus = SMBus(1)
 bme280 = BME280(i2c_dev=bus)
+noise = Noise()
+
 
 logging.basicConfig(
     format='%(asctime)s.%(msecs)03d %(levelname)-8s %(message)s',
