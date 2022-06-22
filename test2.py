@@ -41,7 +41,7 @@ factor = 2.25
 
 cpu_temps = [get_cpu_temperature()] * 5
 
-REST_API_URL = 'https://api.powerbi.com/beta/ddd66cce-ffe1-4029-967c-5e15ef73127f/datasets/7908168f-d482-4df6-9c06-01b2f0e46556/rows?noSignUpCheck=1&cmpid=pbi-glob-head-snn-signin&key=05lmKaucoaGnTC%2BcAEmQuJGudz3Z7aDN5hdLpJfSbpOw%2BE8SVcvD7VhXiDAfpqOGNz5GooQxE345fPexHZazMw%3D%3D'
+REST_API_URL = 'https://api.powerbi.com/beta/ddd66cce-ffe1-4029-967c-5e15ef73127f/datasets/68c21b77-d940-4815-ade3-cf2f56c3895a/rows?key=eFN8uasQB8lLiqo8b95qUC9XXkzF2ilqHFHEa7JOEotKMuQpecfoNXHPcHvSGwv4DLHNS5t%2FqwbJQ5YlnaD9yw%3D%3D'
 
 while True:
     try:
