@@ -62,9 +62,7 @@ while True:
         temperature= raw_temp - ((avg_cpu_temp - raw_temp) / factor)
 
         lux = ltr559.get_lux()     
-        amps = noise.get_amplitudes_at_frequency_ranges([
-        (100, 200)])
-        amps = [n * 32 for n in amps]
+        amps = noise.get_amplitudes_at_frequency_range([(100, 20000)])
         
         
         logging.info("""Temperature: {:05.2f} *C
