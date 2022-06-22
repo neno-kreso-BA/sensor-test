@@ -8,7 +8,7 @@ from datetime import datetime
 from bme280 import BME280
 import logging
 import json
-from enviroplus.noise import Noise
+from enviroplus.noise import noise
 try:
     # Transitional fix for breaking change in LTR559
     from ltr559 import LTR559
