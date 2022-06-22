@@ -64,8 +64,8 @@ while True:
         (100, 200),
         (500, 600),
         (1000, 1200)
-    ])
-    amps = [n * 32 for n in amps]
+        ])
+        amps = [n * 32 for n in amps]
         
         
         logging.info("""Temperature: {:05.2f} *C
