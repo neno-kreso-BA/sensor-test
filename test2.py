@@ -63,10 +63,7 @@ while True:
 
         lux = ltr559.get_lux()     
         amps = noise.get_amplitudes_at_frequency_ranges([
-        (100, 200),
-        (500, 600),
-        (1000, 1200)
-        ])
+        (100, 200)])
         amps = [n * 32 for n in amps]
         
         
@@ -74,7 +71,7 @@ while True:
         Relative humidity: {:05.2f} %
         Light: {:05.02f} Lux
         Amps: {:05.02f} Amps
-        """.format(temperature, humidity,lux,noise))
+        """.format(temperature, humidity,lux,amps))
 
         # data that we're sending to Power BI REST API
 
