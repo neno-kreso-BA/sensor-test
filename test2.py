@@ -60,12 +60,18 @@ while True:
         temperature= raw_temp - ((avg_cpu_temp - raw_temp) / factor)
 
         lux = ltr559.get_lux()     
-        noise = Noise() 
+        amps = noise.get_amplitudes_at_frequency_ranges([
+        (100, 200),
+        (500, 600),
+        (1000, 1200)
+    ])
+    amps = [n * 32 for n in amps]
+        
         
         logging.info("""Temperature: {:05.2f} *C
         Relative humidity: {:05.2f} %
         Light: {:05.02f} Lux
-        Noise: {:05.02f} Amps
+        Amps: {:05.02f} Amps
         """.format(temperature, humidity,lux,noise))
 
         # data that we're sending to Power BI REST API
